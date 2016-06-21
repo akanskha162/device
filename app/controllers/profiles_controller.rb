@@ -2,13 +2,7 @@ class ProfilesController < ApplicationController
 
   def show
 
-    if current_member.profile.blank?
-      @profile = @current_member.build_profile
-      @url = create_path
-    else
-      @profile = current_member.profile
-      @url = update_path
-    end
+   
   end
 
   def create
