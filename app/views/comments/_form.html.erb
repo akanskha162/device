@@ -1,0 +1,15 @@
+<div class='comments' id='comments_of_<%=post.id%>'>
+  <% @comments = post.comments.order(created_at: :asc) %>
+  <% @comments.each do |comment|%>
+		<%= render partial: "comments/show",locals:{comment:comment}%> 
+		<%end%>
+		
+</div>
+
+<%= form_for :comment, url: post_comments_path,remote:true do |f| %>
+	<%= hidden_field_tag :post_id ,post.id%>
+	<p>
+	<%= f.text_field :text, placeholder: 'Comment....', id: "comment_text_field_#{post.id}" %>
+  
+	</p>
+<% end %>

@@ -1,0 +1,18 @@
+<div id='delete_comment_<%= comment.id %>'>
+	<% if comment.present? %>
+		<%= comment.text %>
+		<span id='like_comment_<%= comment.id %>'>
+  		<% text = comment.likes.where(member_id:current_member.id).blank? ? 'like' : 'unlike' %>
+
+  		<%= link_to text,likes_path(comment_id:comment.id,post_id:comment.post ),remote:true %>
+
+  		(<%= comment.likes.count(member_id:current_member.id) %>)
+	  </span>
+		<%= link_to 'delete', post_comment_path(comment.post,comment),data: {:confirm => 'Are you sure?'},:method => :delete,remote:true %>  
+    <%= link_to 'reply',new_path(comment_id:comment), remote:true %>
+    
+    <div id= 'replies_<%= comment.id%>'>
+    </div>
+	<%end%>
+  
+</div><br>

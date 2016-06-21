@@ -1,0 +1,2 @@
+$('.show_posts').append('<%= escape_javascript render partial: "posts/per_page_posts", locals: {posts: @posts} %>');
+$('.pagination').replaceWith('<%= escape_javascript will_paginate(@posts) %>');

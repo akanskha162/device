@@ -1,0 +1,14 @@
+<% comment.replies.each do |reply| %>
+  <%= reply.text %>
+  <br>
+<% end %>
+ 
+<div id= 'new_replies_<%= comment.id%>'>
+</div>
+
+<%= form_for :reply, url: reply_path,remote:true do |f| %>
+  <%= hidden_field_tag :comment_id ,params[:comment_id] %>
+  <p>
+  <%= f.text_field :text, placeholder: 'reply....', id: "reply_text_field_#{params[:comment_id]}" %>
+  </p>
+<% end %>

@@ -1,0 +1,2 @@
+$('#comments_of_<%=params[:post_id]%>').append("<%= j render(:partial =>'show',locals:{comment:@comment}) %>");
+$("#comment_text_field_<%=params[:post_id]%>").val("")

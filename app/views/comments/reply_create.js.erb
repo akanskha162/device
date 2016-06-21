@@ -1,0 +1,2 @@
+$('#new_replies_<%=params[:comment_id]%>').append( "<%= params[:reply][:text] %>" ).append(document.createElement('br'));
+$("#reply_text_field_<%=params[:comment_id]%>").val("")

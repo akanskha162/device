@@ -1,0 +1,7 @@
+<% if current_member.already_likes?(post)%>
+ <%= link_to 'unlike',like_path(id:post.id),remote:true %> 
+<%else%>
+  <%# count = post.likes.count(member_id:current_member.id) %>
+  <%= link_to "like",like_path(id:post.id),remote:true %> 
+<%end%>
+(<%= post.likes.count(member_id:current_member.id) %>)

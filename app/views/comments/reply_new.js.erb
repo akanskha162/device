@@ -1,0 +1,5 @@
+if ($('#replies_<%=params[:comment_id]%>').html().replace(/\s/g, '').length == 0){
+  $('#replies_<%=params[:comment_id]%>').html("<%= j render(:partial =>'new', locals:{comment: @comment}) %>");}
+else {
+  $('#replies_<%=params[:comment_id]%>').html('');
+}

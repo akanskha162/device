@@ -1,0 +1,17 @@
+<div id='delete_<%=post.id%>'>
+	<div id='update_<%= post.id %>'>
+		<%= post.text %>
+	</div>	
+	<div>
+		<span id='like_<%= post.id %>'>		
+			<% text = current_member.already_likes?(post) ? 'unlike' : 'like' %>
+
+			<%= link_to text,like_path(id:post.id),remote:true  %>
+			(<%= post.likes.count %>)
+		</span> 
+    <%= link_to 'comments',new_post_comment_path(post),remote:true %>
+		<%= link_to 'edit', edit_post_path(post),remote:true %>
+		<%= link_to 'delete', post_path(post),data: {:confirm => 'Are you sure?'},:method => :delete,remote:true %>
+	</div>
+	<br>
+</div>

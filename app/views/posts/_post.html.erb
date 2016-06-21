@@ -1,0 +1,5 @@
+<div class="post">
+	<br><% posts.each do|post|%>
+  <p><%= render partial: 'create', locals: {post: post} %></p>
+ <%end%>
+</div>

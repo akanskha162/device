@@ -1,0 +1,11 @@
+//alert('<%=params[:post_id]%>')
+if ($('#comments_for_<%=params[:post_id]%>').html().replace(/\s/g, '').length == 0){
+	$('#comments_for_<%=params[:post_id]%>').html("<%= j render(:partial =>'form',locals:{post: @post}) %>");
+}
+else {
+	$('#comments_for_<%=params[:post_id]%>').html('');
+}
+// $("#comment_text_field_<%=params[:post_id]%>").val("")
+ 
+$("#comment_text_field").val("")
+

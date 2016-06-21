@@ -1,0 +1,94 @@
+<style>
+</style>
+<div id ="click"></div> 
+<button id="flip">Click to slide down panel</button>
+<button id="stop">stop</button>
+
+ <!-- html: {multipart: true} -->
+
+<%= form_for @profile, url: update_path, :html => {:multipart => true},remote: true  do |f|%>
+    <div class="status"></div>
+    <p>
+      <%= f.label :city %><br>
+      <%= f.text_field :city %>
+    </p>
+    <p>
+      <%= f.label :address %><br>
+      <%= f.text_field :address %>
+    </p>
+    <p>
+      <%= f.label :last_name %><br>
+      <%= f.text_field :last_name %>
+    </p>
+    <p>
+      <%= f.label :first_name %><br>
+      <%= f.text_field :first_name %>
+    </p>
+    <!--  <div class="dropdown">
+        <%= f.label :date %>
+        <%= f.text_field :date ,:id=> "date" %>
+    </div> -->
+    <!-- <p>
+      <%= label_tag :image %><br>
+      <%= file_field_tag 'image[]', multiple: true %>
+    </p> -->
+     <p><%= image_tag @profile.image %>
+     <div id = "display">
+     
+      <%= f.file_field :image , multiple: true ,:id => "upload" %>
+      </div>
+    </p>
+    <p>
+      <%= f.submit :id=>"flop" %>
+    </p>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+<%#= link_to 'form',show_form_path,remote:true %> 
+<%= link_to 'download',download_path(format: :pdf) %>  
+</div>
+ <script>
+  $(document).ready(function(){   
+    $(".profile-form").hide();
+
+    $("#flip").click(function(){
+      if ($(".profile-form").is(":visible")) {
+        $('.profile-form').hide(); 
+      }
+      else {
+        $('.profile-form').show();
+      }
+    });
+    
+  
+    // $(document).on('click',"#flop", function(){
+    //    // var name = 'akanksha';
+    //     $.ajax({
+    //       type: "patch",
+    //       url:"<%= update_path %>",
+    //       data: $(".edit_profile").serialize(),
+    //       success: function(response){
+    //         $('.status').html(response.status);
+    //       }
+    //     })
+    //   return false
+    // });
+    
+    $("#stop").click(function(){
+      $(".profile-form").stop();
+    });
+
+  });   
+
+ // $("#date").click(function(){
+   
+ //    $("#date").datepicker();
+     
+ //  });
+ </script>

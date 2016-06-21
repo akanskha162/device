@@ -1,0 +1,68 @@
+<style> 
+  .comments {
+      /*display: none;*/
+  }
+</style>
+
+   
+<!-- <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script> -->
+
+ 
+  <div class='new_post'>
+  <%= form_for :post, url:posts_path, remote:true do |f| %>
+    <p>
+    <%= f.text_area :text,  placeholder: 'Share your post....',class: "bg-warning" ,class: "form-control"%>
+    </p>
+    <p> -->
+    <%= f.label :content %>
+    <%#= f.text_area :content, as: :bootsy %>
+   
+    <%= f.cktext_area :body, rows: 10 %>
+    <p>
+  <% end %>
+ </div>
+<%= form_tag(:class =>'search_data' ) do %>
+<%= text_field_tag :search ,params[:search], placeholder: "Search Posts",:id =>'search_field' %>
+<% end %>
+
+<div id ='keyup'></div>
+ 
+
+<div class='show_posts'>
+  <% if @posts.present? %>
+    <h1>Posts</h1> 
+    <%= render partial: 'posts/per_page_posts', locals: {posts: @posts} %>
+  <%end%>
+</div>  
+ 
+<%#= will_paginate @posts %>
+
+ <script>
+ 
+  $(document).ready(function(){   
+    $("#search_field").keyup(function(){
+      var val = $(this).val() 
+        $.ajax({
+          type: "get",
+          url: "/posts/search",
+          data: { val: val}  
+          })
+    });
+     return false
+   });
+
+     $(document).ready(function(){
+    $('#post_text').keypress(function(e){
+      if(e.which == 13){
+        $(this).closest('form').submit();
+      }
+    });
+  });
+
+
+  </script>
+
+
+  

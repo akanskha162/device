@@ -1,0 +1,36 @@
+<div class='profile-form'>  
+<%= form_for @profile, url: "#-", :html => {:multipart => true} do |f|%>
+    <div class="status"></div>
+    <p>
+      <%= f.label :city %><br>
+      <%= f.text_field :city %>
+    </p>
+    <p>
+      <%= f.label :address %><br>
+      <%= f.text_field :address %>
+    </p>
+    <p>
+      <%= f.label :last_name %><br>
+      <%= f.text_field :last_name %>
+    </p>
+    <p>
+      <%= f.label :first_name %><br>
+      <%= f.text_field :first_name %>
+    </p>
+    <!--  <div class="dropdown">
+        <%= f.label :date %>
+        <%= f.text_field :date ,:id=> "date" %>
+    </div> -->
+    <!-- <p>
+      <%= label_tag :image %><br>
+      <%= file_field_tag 'image[]', multiple: true %>
+    </p> -->
+     <p>
+      <%= f.label :image %><br>
+      <%= file_field :image_tag, multiple: true %>
+    </p>
+    <p>
+      <%= f.submit :id=>"flop" %>
+    </p>
+  <% end %>
+</div>

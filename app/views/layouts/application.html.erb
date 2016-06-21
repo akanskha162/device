@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery lightGallery demo</title>
+  <link href="../assets/lightgallery.css" rel="stylesheet">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
+  <title>App</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+  <% end %>
+  <!-- <nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+ -->
+  <% if member_signed_in? %>
+    <%= link_to 'Sign out', destroy_member_session_path,method: :delete ,class: "btn btn-primary btn-sm" %>
+    <%= link_to 'post', posts_path ,class: "btn btn-primary btn-sm" %> 
+    <%= link_to 'profile', show_path %>
+    <%= link_to 'edit',edit_member_registration_path %> 
+    <%= link_to 'photos',display_path %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", member_omniauth_authorize_path(:facebook) %>
+    <br>
+    <%= link_to "Sign in with gmail", member_omniauth_authorize_path(:google_oauth2) %>
+    <br> 
+    <%= link_to "Sign in with twitter", member_omniauth_authorize_path(:twitter) %>  
+    <%= link_to 'log_in',new_member_session_path,method: :get %>
+  <% end %>
+  <br><br>
+<!-- </nav> -->
+  <%= yield %>
+
+
+  <script type="text/javascript">
+        $(document).ready(function(){
+            $('#lightgallery').lightGallery();
+        });
+        </script>
+        <script src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+        <script src="../assets/lightgallery.js"></script>
+        <script src="../assets/lg-fullscreen.js"></script>
+        <script src="../assets/lg-thumbnail.js"></script>
+        <script src="../assets/lg-zoom.js"></script>
+
+</body>
+</html>
